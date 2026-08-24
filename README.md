@@ -56,7 +56,7 @@ The application stores this data in the browser's "localStorage", allowing quest
 
 Project Structure
 
-discussion-portal-v2/
+discussion-portal/
 │
 ├── index.html
 ├── style.css
