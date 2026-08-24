@@ -1,0 +1,104 @@
+Discussion Portal
+
+A browser-based discussion portal built using HTML, CSS, and JavaScript.
+
+This project allows users to create questions, search through existing questions, add responses, interact with responses, mark questions as favourites, and resolve discussions.
+
+Features
+
+- Create new questions with a title and description
+- View all active questions
+- Search questions by title or description
+- Highlight matching search text
+- Mark questions as favourites
+- Favourite questions appear first
+- Open individual questions and view their responses
+- Add responses to questions
+- Like and dislike responses
+- Responses are sorted by number of likes
+- Resolve questions
+- Display relative question creation time
+- Automatically update relative timestamps
+- Persist questions and responses using "localStorage"
+- Responsive interface for desktop, tablet, and mobile devices
+
+Technologies Used
+
+- HTML5 – Application structure
+- CSS3 – Styling and responsive layout
+- JavaScript – Application logic, DOM manipulation, event handling, searching, sorting, and state management
+- LocalStorage – Persistent browser-side data storage
+- Font Awesome – Icons
+
+How It Works
+
+The application maintains questions and their responses using JavaScript objects and arrays.
+
+Each question contains information such as:
+
+- Question ID
+- Title
+- Description
+- Favourite status
+- Resolved status
+- Creation timestamp
+- Responses
+
+Each response contains:
+
+- Response ID
+- Responder name
+- Response content
+- Likes
+- Dislikes
+
+The application stores this data in the browser's "localStorage", allowing questions and responses to remain available after refreshing the page.
+
+Project Structure
+
+discussion-portal-v2/
+│
+├── index.html
+├── style.css
+├── script.js
+└── README.md
+
+Running the Project
+
+No backend or installation is required.
+
+Simply open "index.html" in a modern web browser.
+
+What I Learned
+
+Through this project, I practiced:
+
+- DOM manipulation
+- Event delegation
+- JavaScript arrays and objects
+- Searching and filtering data
+- Sorting data
+- Managing application state
+- Working with nested objects and arrays
+- Browser "localStorage"
+- Dynamic element creation
+- Responsive web design
+- Building a complete interactive frontend application
+
+Future Improvements
+
+Possible future versions could include:
+
+- Backend/database integration
+- User authentication
+- User profiles
+- Editing questions and responses
+- Better response interaction controls
+- Categories or tags
+- Pagination
+- Multiple users
+- Server-side data persistence
+
+Version
+
+Built as part of my ongoing journey in learning web development and building projects through practice.
