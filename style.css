@@ -1,0 +1,780 @@
+/* =========================================================
+   DISCUSSION PORTAL
+   Clean, simple UI
+   HTML + JavaScript unchanged
+========================================================= */
+
+:root {
+  --primary: #0f766e;
+  --primary-hover: #0d625c;
+
+  --background: #f5f7f8;
+  --white: #ffffff;
+  --surface: #fafafa;
+
+  --border: #dfe5e8;
+  --border-hover: #c7d0d4;
+
+  --text: #172026;
+  --text-light: #5d6970;
+  --text-muted: #8b969c;
+
+  --danger: #dc2626;
+  --danger-hover: #b91c1c;
+
+  --blue: #2563eb;
+  --gray-button: #64748b;
+
+  --shadow: 0 3px 12px rgba(15, 23, 42, 0.06);
+  --shadow-hover: 0 7px 20px rgba(15, 23, 42, 0.09);
+
+  --radius: 10px;
+  --radius-large: 14px;
+}
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+
+  font-family:
+    Inter,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  background: var(--background);
+  color: var(--text);
+}
+
+
+/* =========================================================
+   PAGE
+========================================================= */
+
+section {
+  width: min(1400px, 94%);
+  margin: 0 auto;
+  padding: 30px 0 50px;
+}
+
+
+/* =========================================================
+   PAGE TITLE
+========================================================= */
+
+h1 {
+  margin-bottom: 26px;
+  padding: 22px 20px;
+
+  border-radius: var(--radius-large);
+
+  background: var(--primary);
+  color: white;
+
+  text-align: center;
+
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 750;
+  letter-spacing: 0.5px;
+
+  box-shadow: var(--shadow);
+}
+
+
+/* =========================================================
+   MAIN LAYOUT
+========================================================= */
+
+.apply-flex {
+  display: grid;
+  grid-template-columns: 360px minmax(0, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+
+
+/* =========================================================
+   LEFT PANEL
+========================================================= */
+
+.apply-border {
+  background: var(--white);
+
+  border: 1px solid var(--border);
+  border-radius: var(--radius-large);
+
+  padding: 18px;
+
+  box-shadow: var(--shadow);
+}
+
+
+/* Search / new question */
+
+.apply-border > div:first-child {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+
+  margin-bottom: 17px;
+}
+
+#new-form {
+  width: 100%;
+
+  padding: 11px 14px;
+
+  border: 0;
+  border-radius: 8px;
+
+  background: var(--primary);
+  color: white;
+
+  font-size: 14px;
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+
+/* =========================================================
+   INPUTS
+========================================================= */
+
+.apply-flex input,
+.apply-flex textarea {
+  width: 100%;
+
+  padding: 12px 13px;
+
+  border: 1px solid var(--border);
+  border-radius: 8px;
+
+  outline: none;
+
+  background: var(--white);
+  color: var(--text);
+
+  font-family: inherit;
+  font-size: 15px;
+
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.apply-flex input:hover,
+.apply-flex textarea:hover {
+  border-color: var(--border-hover);
+}
+
+.apply-flex input:focus,
+.apply-flex textarea:focus {
+  border-color: var(--primary);
+
+  box-shadow: 0 0 0 3px rgba(15, 118, 110, 0.09);
+}
+
+.apply-flex input::placeholder,
+.apply-flex textarea::placeholder {
+  color: var(--text-muted);
+}
+
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+.apply-flex button {
+  padding: 10px 15px;
+
+  border: 0;
+  border-radius: 8px;
+
+  background: var(--primary);
+  color: white;
+
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    background 0.15s ease,
+    transform 0.15s ease;
+}
+
+.apply-flex button:hover {
+  background: var(--primary-hover);
+  transform: translateY(-1px);
+}
+
+.apply-flex button:active {
+  transform: translateY(0);
+}
+
+
+/* =========================================================
+   QUESTION LIST
+========================================================= */
+
+#output-box {
+  max-height: 680px;
+
+  padding-right: 3px;
+
+  overflow-y: auto;
+
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 transparent;
+}
+
+#output-box > p {
+  padding: 40px 15px;
+
+  text-align: center;
+
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+
+/* =========================================================
+   QUESTION CARD
+========================================================= */
+
+#output-box > div {
+  position: relative;
+
+  margin-bottom: 10px;
+  padding: 16px;
+
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+
+  background: var(--white);
+
+  cursor: pointer;
+
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease,
+    transform 0.15s ease;
+}
+
+#output-box > div:hover {
+  border-color: #b8d9d5;
+
+  box-shadow: var(--shadow-hover);
+
+  transform: translateY(-2px);
+}
+
+#output-box > div h3 {
+  margin-bottom: 6px;
+  padding-right: 35px;
+
+  color: var(--text);
+
+  font-size: 16px;
+  font-weight: 700;
+
+  line-height: 1.4;
+}
+
+#output-box > div p {
+  padding-right: 20px;
+
+  color: var(--text-light);
+
+  font-size: 13px;
+  line-height: 1.55;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+
+  overflow: hidden;
+}
+
+
+/* =========================================================
+   FAVOURITE BUTTON
+========================================================= */
+
+.favourite-button {
+  position: absolute;
+
+  top: 10px;
+  right: 10px;
+
+  width: 32px;
+  height: 32px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  cursor: pointer;
+
+  transition:
+    background 0.15s ease,
+    transform 0.15s ease;
+}
+
+.favourite-button:hover {
+  background: #fff7d6;
+  transform: scale(1.05);
+}
+
+.favourite-button:active {
+  transform: scale(0.95);
+}
+
+
+/* =========================================================
+   RIGHT-SIDE PANELS
+========================================================= */
+
+#div-1,
+#div-2 {
+  position: relative;
+
+  background: var(--white);
+
+  border: 1px solid var(--border);
+  border-radius: var(--radius-large);
+
+  box-shadow: var(--shadow);
+
+  overflow: hidden;
+}
+
+
+/* =========================================================
+   NEW QUESTION
+========================================================= */
+
+#div-1 {
+  min-height: 560px;
+  padding: 50px 45px;
+}
+
+.apply-styling {
+  display: flex;
+  flex-direction: column;
+}
+
+.apply-styling h2 {
+  color: var(--primary);
+
+  font-family: "Bebas Neue", sans-serif;
+  font-size: clamp(38px, 5vw, 52px);
+  font-weight: 400;
+
+  line-height: 1;
+  letter-spacing: 1px;
+}
+
+.apply-styling span {
+  margin-top: 9px;
+  margin-bottom: 26px;
+
+  color: var(--text-light);
+
+  font-size: 15px;
+}
+
+#div-1 .apply-colflex {
+  width: min(680px, 100%);
+  margin: auto;
+}
+
+#title-box {
+  margin-top: 10px;
+}
+
+#description-box {
+  min-height: 150px;
+  resize: vertical;
+}
+
+#submit {
+  align-self: flex-end;
+  min-width: 120px;
+  margin-top: 4px;
+}
+
+
+/* =========================================================
+   QUESTION DETAILS
+========================================================= */
+
+#div-2 {
+  min-height: 560px;
+  padding: 32px;
+}
+
+#div-2 > h2 {
+  margin-bottom: 18px;
+
+  color: var(--text);
+
+  font-size: 26px;
+  font-weight: 750;
+}
+
+
+/* =========================================================
+   SELECTED QUESTION
+========================================================= */
+
+.output-box-2 {
+  margin-bottom: 28px;
+  padding: 19px;
+
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+
+  background: var(--surface);
+}
+
+#question-title {
+  margin-bottom: 8px;
+
+  color: var(--primary);
+
+  font-size: 22px;
+  font-weight: 750;
+
+  line-height: 1.35;
+}
+
+#question-description {
+  margin-bottom: 17px;
+
+  color: var(--text-light);
+
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+
+/* =========================================================
+   RESOLVE
+========================================================= */
+
+#resolve {
+  background: var(--danger);
+}
+
+#resolve:hover {
+  background: var(--danger-hover);
+}
+
+
+/* =========================================================
+   RESPONSE SECTION
+========================================================= */
+
+#div-2 > div > h3 {
+  margin-bottom: 13px;
+
+  color: var(--text);
+
+  font-size: 19px;
+  font-weight: 750;
+}
+
+#response-list {
+  margin-bottom: 28px;
+  padding: 0;
+
+  background: transparent;
+  border: 0;
+}
+
+
+/* =========================================================
+   RESPONSE CARD
+========================================================= */
+
+#response-list > div {
+  margin-bottom: 10px;
+  padding: 16px;
+
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+
+  background: var(--white);
+
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+#response-list > div:hover {
+  border-color: var(--border-hover);
+  box-shadow: var(--shadow);
+}
+
+#response-list > div h3 {
+  margin-bottom: 5px;
+
+  color: var(--primary);
+
+  font-size: 15px;
+  font-weight: 750;
+}
+
+#response-list > div p {
+  margin-bottom: 12px;
+
+  color: var(--text-light);
+
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+
+/* =========================================================
+   LIKE / DISLIKE
+========================================================= */
+
+.like-button,
+.dislike-button {
+  padding: 7px 11px !important;
+
+  margin-right: 5px !important;
+
+  border-radius: 7px !important;
+
+  font-size: 12px !important;
+}
+
+.like-button {
+  background: var(--blue) !important;
+}
+
+.like-button:hover {
+  background: #1d4ed8 !important;
+}
+
+.dislike-button {
+  background: var(--gray-button) !important;
+}
+
+.dislike-button:hover {
+  background: #475569 !important;
+}
+
+
+/* =========================================================
+   ADD RESPONSE
+========================================================= */
+
+#div-2 > .apply-colflex {
+  width: 100%;
+
+  align-items: stretch;
+
+  gap: 9px;
+
+  text-align: left;
+}
+
+#div-2 > .apply-colflex h3 {
+  margin-bottom: 5px;
+
+  color: var(--primary);
+
+  font-size: 19px;
+}
+
+#user-response {
+  min-height: 130px;
+  resize: vertical;
+}
+
+#submit-response {
+  align-self: flex-end;
+  min-width: 120px;
+}
+
+
+/* =========================================================
+   SCROLLBAR
+========================================================= */
+
+#output-box::-webkit-scrollbar {
+  width: 6px;
+}
+
+#output-box::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+#output-box::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 10px;
+}
+
+#output-box::-webkit-scrollbar-thumb:hover {
+  background: #aeb8bf;
+}
+
+
+/* =========================================================
+   TEXT SELECTION
+========================================================= */
+
+::selection {
+  background: #ccfbf1;
+  color: #115e59;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1000px) {
+
+  section {
+    width: 92%;
+  }
+
+  .apply-flex {
+    grid-template-columns: 1fr;
+  }
+
+  #output-box {
+    max-height: 500px;
+  }
+
+  #div-1,
+  #div-2 {
+    min-height: auto;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+  section {
+    width: 94%;
+    padding-top: 16px;
+  }
+
+  h1 {
+    margin-bottom: 18px;
+    padding: 18px 14px;
+
+    border-radius: 12px;
+
+    font-size: 27px;
+  }
+
+  .apply-border {
+    padding: 14px;
+    border-radius: 12px;
+  }
+
+  #div-1,
+  #div-2 {
+    padding: 25px 17px;
+    border-radius: 12px;
+  }
+
+  .apply-styling h2 {
+    font-size: 38px;
+  }
+
+  .apply-styling span {
+    margin-bottom: 20px;
+    font-size: 14px;
+  }
+
+  #output-box {
+    max-height: 400px;
+  }
+
+  #output-box > div {
+    padding: 14px;
+  }
+
+  #output-box > div h3 {
+    font-size: 16px;
+  }
+
+  #question-title {
+    font-size: 20px;
+  }
+
+  #question-description {
+    font-size: 14px;
+  }
+
+  #submit,
+  #submit-response,
+  #resolve {
+    width: 100%;
+    align-self: stretch;
+  }
+
+  #response-list > div {
+    padding: 14px;
+  }
+}
+
+
+/* =========================================================
+   VERY SMALL SCREENS
+========================================================= */
+
+@media (max-width: 400px) {
+
+  section {
+    width: 96%;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  #div-1,
+  #div-2 {
+    padding: 20px 14px;
+  }
+
+  .apply-styling h2 {
+    font-size: 34px;
+  }
+
+  #output-box > div {
+    padding: 12px;
+  }
+}

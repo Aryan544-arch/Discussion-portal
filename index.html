@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Discussion App</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
+  </head>
+  <body>
+    <section>
+      <h1>Discussion Portal</h1>
+      <div class="apply-flex">
+        <div class="apply-border">
+          <div>
+            <button id="new-form">New Question Form</button>
+            <input
+              type="text"
+              placeholder="search questions"
+              id="search-question"
+            />
+          </div>
+          <div id="output-box"></div>
+        </div>
+        <div id="right-side">
+          <div class="apply-styling" style="display: block" id="div-1">
+            <div class="apply-colflex">
+              <h2>Welcome to Discussion Portal!</h2>
+              <span>Enter a subject and question to get started</span>
+              <input type="text" id="title-box" placeholder="Title" />
+              <textarea
+                name="description"
+                id="description-box"
+                placeholder="Description"
+                rows="5"
+                cols="20"
+              ></textarea>
+              <button type="submit" id="submit">Submit</button>
+            </div>
+          </div>
+          <div class="apply-colflex" style="display: none" id="div-2">
+            <h2>Question:</h2>
+            <div class="output-box-2">
+              <h3 id="question-title"></h3>
+              <p id="question-description"></p>
+              <button id="resolve">Resolve</button>
+            </div>
+            <div>
+              <h3>Response</h3>
+              <div id="response-list" class="output-box-2"></div>
+            </div>
+            <div class="apply-colflex">
+              <h3>Add Response</h3>
+              <input type="text" id="responser-name" placeholder="Enter Name" />
+              <textarea
+                name="response-description"
+                id="user-response"
+                placeholder="Enter Comment"
+                rows="5"
+                cols="20"
+              ></textarea>
+              <button type="submit" id="submit-response">Submit</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script src="script.js"></script>
+  </body>
+</html>
