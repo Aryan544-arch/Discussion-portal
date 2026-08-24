@@ -1,5 +1,9 @@
 Discussion Portal
 
+
+## Live Demo
+ https://aryan544-arch.github.io/Discussion-portal/
+
 A browser-based discussion portal built using HTML, CSS, and JavaScript.
 
 This project allows users to create questions, search through existing questions, add responses, interact with responses, mark questions as favourites, and resolve discussions.
